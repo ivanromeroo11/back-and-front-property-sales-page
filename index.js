@@ -5,6 +5,7 @@
 // Importar con ESM 
 
 import express from 'express'
+import usuarioRoutes from './routes/usuarioRoutes.js'
 
 
 // Crear la app para llamar a express 
@@ -13,11 +14,8 @@ const app = express()
 
 // Routing
 
-app.get('/', function(req, res) {
-    
-    res.send('Hello world in express')
-      
-});
+app.use('/', usuarioRoutes)
+
 
 
 // Definir puerto y arrancarlo
