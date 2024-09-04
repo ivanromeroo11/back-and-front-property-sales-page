@@ -5,7 +5,7 @@
 // Importar con ESM 
 
 import express from 'express'
-import usuarioRoutes from './routes/usuarioRoutes.js'
+import usuarioRoutes from './routes/userRoutes.js'
 
 
 // Crear la app para llamar a express 
