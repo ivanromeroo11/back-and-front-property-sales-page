@@ -22,5 +22,10 @@ block contenido
                     div
                         label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold(for="repetir_pasword") Repetir Password
                         input#repetir_password.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Repite tu Password" type="password" name="repetir_password")
+                    div.flex.items-center.justify-between 
+                       a.text-gray-500.text-xs(href="/auth/login") Ya tienes cuenta? Inicia sesión
+                       a.text-gray-500.text-xs(href="/auth/olvide-password") Olvide mi password 
+                    
+                    
                     div
                         input(class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 cursor-pointer" type="submit" value="Crear Cuenta")        
