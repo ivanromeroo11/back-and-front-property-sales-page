@@ -5,7 +5,7 @@
 // Importar con ESM 
 
 import express from 'express'
-import usuarioRoutes from './routes/userRoutes.js'
+import userRoutes from './routes/userRoutes.js'
 
 
 // Crear la app para llamar a express 
@@ -14,7 +14,7 @@ const app = express()
 
 // Routing
 
-app.use('/auth', usuarioRoutes)
+app.use('/auth', userRoutes)
 
 // Habilitar Pug
 
