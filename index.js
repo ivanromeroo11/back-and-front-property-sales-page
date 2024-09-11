@@ -13,6 +13,7 @@ import db from './config/db.js'
 
 try {
     await db.authenticate();
+    db.sync();
     console.log('Conexión correcta a la base de datos')
     
 } catch (error) {
