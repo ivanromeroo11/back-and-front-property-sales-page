@@ -30,7 +30,11 @@ const registrar = async (req, res) => {
         //Errores
        return res.render('auth/registro', {
             pagina: 'Crear cuenta',
-            errores: resultado.array()
+            errores: resultado.array(),
+            usuario: {
+                nombre:  req.body.nombre,
+                email : req.body.email
+            }
        })
     }
    
