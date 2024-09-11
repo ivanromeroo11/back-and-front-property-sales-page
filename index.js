@@ -25,6 +25,10 @@ try {
 
 const app = express()
 
+//Habilitar lectura y datos de formularios
+
+app.use( express.urlencoded({extended:true}) )
+
 // Routing
 
 app.use('/auth', userRoutes)
