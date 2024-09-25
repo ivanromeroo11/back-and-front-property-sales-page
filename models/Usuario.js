@@ -22,8 +22,9 @@ const Ususario = db.define('usuarios', {
     beforeCreate: async function(usuario){
             const salt = await bcrypt.genSalt(10)
             usuario.password = await bcrypt.hash( usuario.password, salt );
-    }    
     }
+
+  }
 })
 
 export default Ususario

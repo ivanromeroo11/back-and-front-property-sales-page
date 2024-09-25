@@ -1,5 +1,6 @@
 import { check, validationResult } from 'express-validator'
 import Usuario from "../models/Usuario.js"
+import { generarId } from '../helpers/tokens.js'
 
 
 const formularioLogin = (req, res) => {
@@ -61,10 +62,14 @@ const registrar = async (req, res) => {
     nombre,
     email,
     password,
-    token: 123
+    token: generarId()
    })
 
-  
+//Mostrar mensaje de confirmacion
+res.render('templates/mensaje',{
+    pagina: 'Cuenta creada correctamente',
+    mensaje: 'Hemos enviado un Email de confirmación, presiona en el enlace'
+})
 }
     
 
