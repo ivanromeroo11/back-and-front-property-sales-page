@@ -46,7 +46,7 @@ app.use( express.static('public') )
 
 // Definir puerto y arrancarlo
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
     console.log(`Funciona en el puerto ${port}`)

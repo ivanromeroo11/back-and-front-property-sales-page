@@ -83,7 +83,26 @@ const registrar = async (req, res) => {
 })
 }
     
+//Función que comprueba una cuenta 
 
+const confirmar = async (req,res) => {
+
+    const { token } = req.params;
+
+  //Verificar si el token es valido
+      const usuario = await Usuario.findOne({ where: { token } })
+
+        if(!usuario) {
+            res.render('auth/confirmar-cuenta', {
+                pagina: 'Error al confirmar tu cuenta',
+                mensaje: 'No válido',
+                error: true
+            })
+        }
+  
+  //Confirmar la cuenta 
+
+}
 
 const formularioOlvidePassword = (req, res) => {
     res.render('auth/olvide-password', {
@@ -95,5 +114,6 @@ export{
     formularioLogin,
     formularioRegistro,
     registrar,
+    confirmar,
     formularioOlvidePassword,
 }
