@@ -2,7 +2,7 @@ import { DataTypes } from 'sequelize'
 import bcrypt from 'bcrypt'
 import db from '../config/db.js'
 
-const Ususario = db.define('usuarios', {
+const Usuario = db.define('usuarios', {
     nombre:{
         type: DataTypes.STRING,
         allorNull: false 
@@ -27,6 +27,6 @@ const Ususario = db.define('usuarios', {
   }
 })
 
-export default Ususario
+export default Usuario
 
 

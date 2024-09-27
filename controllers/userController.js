@@ -85,24 +85,40 @@ const registrar = async (req, res) => {
     
 //Función que comprueba una cuenta 
 
-const confirmar = async (req,res) => {
+const confirmar = async (req, res) => {
+    const { token } = req.params; // Capturando el token de los parámetros de la ruta
 
-    const { token } = req.params;
+    try {
+        const usuario = await Usuario.findOne({ where: { token } });
 
-  //Verificar si el token es valido
-      const usuario = await Usuario.findOne({ where: { token } })
-
-        if(!usuario) {
-            res.render('auth/confirmar-cuenta', {
+        if (!usuario) {
+            return res.render('auth/confirmar-cuenta', {
                 pagina: 'Error al confirmar tu cuenta',
-                mensaje: 'No válido',
+                mensaje: 'Token no válido o expirado.',
                 error: true
-            })
+            });
         }
-  
-  //Confirmar la cuenta 
 
-}
+        usuario.confirmado = true; // Cambia esto según tu estructura de datos
+        await usuario.save();
+
+        return res.render('auth/confirmar-cuenta', {
+            pagina: 'Cuenta confirmada',
+            mensaje: 'Tu cuenta ha sido confirmada con éxito.',
+            error: false
+        });
+    } catch (error) {
+        console.error('Error al confirmar la cuenta:', error);
+        return res.render('auth/confirmar-cuenta', {
+            pagina: 'Error al confirmar tu cuenta',
+            mensaje: 'Hubo un error al procesar tu solicitud.',
+            error: true
+        });
+    }
+};
+
+
+
 
 const formularioOlvidePassword = (req, res) => {
     res.render('auth/olvide-password', {
