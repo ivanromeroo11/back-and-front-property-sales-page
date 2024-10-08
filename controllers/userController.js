@@ -12,8 +12,12 @@ const formularioLogin = (req, res) => {
 
 
 const formularioRegistro = (req, res) => {
+     
+    console.log(req.csrfToken())
+
     res.render('auth/registro', {
-        pagina: 'Crear cuenta' 
+        pagina: 'Crear cuenta',
+        csrfToken: req.csrfToken() 
     })
 }
 
@@ -32,6 +36,7 @@ const registrar = async (req, res) => {
         //Errores
        return res.render('auth/registro', {
             pagina: 'Crear cuenta',
+            csrfToken: req.csrfToken(),
             errores: resultado.array(),
             usuario: {
                 nombre:  req.body.nombre,
@@ -50,6 +55,7 @@ const registrar = async (req, res) => {
     if(existeUsuario) {
         return res.render('auth/registro', {
             pagina: 'Crear cuenta',
+            csrfToken: req.csrfToken(),
             errores: [{msg: 'el Ususario ya esta registrado'}],
             usuario: {
                 nombre:  req.body.nombre,
@@ -98,8 +104,9 @@ const confirmar = async (req, res) => {
                 error: true
             });
         }
-
+        // Confirmar cuenta 
         usuario.confirmado = true; // Cambia esto según tu estructura de datos
+        usuario.token = null;
         await usuario.save();
 
         return res.render('auth/confirmar-cuenta', {
@@ -115,6 +122,8 @@ const confirmar = async (req, res) => {
             error: true
         });
     }
+
+    
 };
 
 

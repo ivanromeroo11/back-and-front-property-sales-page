@@ -5,9 +5,29 @@
 // Importar con ESM 
 
 import express from 'express'
+import csurf from 'csurf'
+import cookieParser from 'cookie-parser'
 import userRoutes from './routes/userRoutes.js'
 import db from './config/db.js'
 
+
+// Crear la app para llamar a express 
+
+const app = express()
+
+//Habilitar lectura y datos de formularios
+
+app.use( express.urlencoded({extended:true}) )
+
+
+
+//Habilitar Cookie Parser
+
+app.use( cookieParser() )
+
+//Habilitar CSRF
+
+app.use( csurf({cookie: true}))
 
 //Conexión a la base de datos
 
@@ -22,13 +42,8 @@ try {
 }
 
 
-// Crear la app para llamar a express 
 
-const app = express()
 
-//Habilitar lectura y datos de formularios
-
-app.use( express.urlencoded({extended:true}) )
 
 // Routing
 
