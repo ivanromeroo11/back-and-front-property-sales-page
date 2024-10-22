@@ -21,15 +21,17 @@ block contenido
                         label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold(for="titulo") Titulo de anuncio
                         input#titulo.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Titulo propiedad, ej. Casa en la montaña" type="text" name="titulo")
                     
+
+                    div
+                        label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold(for="descripcion") Descripción
+                        textarea#titulo.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Descripcion de la propiedad"  name="descripcion")
+                    
                     div(class="md:flex md:gap-4 space-y-5 md:space-y-0") 
 
                         div(class="md:w-1/2")
                             label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold(for="categoria") Categoría 
                             select#categoria.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(name="categoria") 
                                 option(value="0") Selecciona una categoría
-                                option(value="1") Venta
-                                option(value="2") Renta
-                                option(value="3") Traspaso
 
                         div(class="md:w-1/2")
                             label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold(for="precio") Precio 
