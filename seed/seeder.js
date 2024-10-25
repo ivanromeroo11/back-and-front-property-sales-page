@@ -1,9 +1,8 @@
 import { exit } from 'node:process';
 import categorias from './categorias.js';
 import precios from './precios.js';
-import Categoria from '../models/Categoria.js';
-import Precio from '../models/Precio.js';
 import db from '../config/db.js';
+import { Categoria, Precio, Usuario, Propiedad } from '../models/index.js';
 
 
 const importarDatos = async () => {
@@ -36,10 +35,8 @@ const importarDatos = async () => {
 const eliminarDatos = async () => {
 
     try {
-        await Promise.all([
-            Categoria.destroy({where: {}, truncate: true}),
-            Precio.destroy({where: {}, truncate: true})
-        ])   
+        await db.authenticate();
+        await db.sync({force: true});
         console.log('Datos eliminados correctamente')
         exit()
     } catch (error) {
