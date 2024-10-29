@@ -8,6 +8,7 @@ const admin = (req, res) => {
     res.render('propiedades/admin',{
         pagina: 'Mis Propiedades',
         barra: true,
+        
     });
 }
 
@@ -21,15 +22,13 @@ const crear = async (req, res) => {
         Precio.findAll()
     ]);
 
-
-
-
     res.render('propiedades/crear',{
         pagina: 'Crear Propiedad',
         barra: true,
         csrfToken: req.csrfToken(),
         categorias,
-        precios
+        precios,
+        datos: {}
 
     });
 }
@@ -57,9 +56,10 @@ const guardar = async (req, res) => {
             precios,
             errores: resultado.array(),
             datos: req.body
-    
         });
     }
+    // Lógica para guardar la propiedad
+    res.status(200).json({ message: 'Propiedad creada correctamente' });
 }
 
 export{
