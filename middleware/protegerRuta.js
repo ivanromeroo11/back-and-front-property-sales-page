@@ -12,10 +12,16 @@ const protegerRuta = async (req, res, next) => {
     //Comporbar el token 
     try {
        const decoded = jwt.verify(_token, process.env.JWT_SECRET)
-       const usuario = await Usuario.findByPk(decoded.id)
-       
+       const usuario = await Usuario.scope('eliminarPassword').findByPk(decoded.id)
 
-       console.log(usuario)
+       //Almacenar usuario en la request
+       if(usuario){
+        req.usuario = usuario
+
+       }else{
+           return res.redirect('/auth/login')
+       }
+       return next();
        
     } catch (error) {
         console.log(error)

@@ -8,10 +8,11 @@ const router = express.Router();
 
 
 router.get('/mis-propiedades', protegerRuta, admin)
-router.get('/propiedades/crear', crear)
+router.get('/propiedades/crear', protegerRuta, crear)
 
 // Validación de los campos 
 router.post('/propiedades/crear',
+        protegerRuta,
         body('titulo').notEmpty().withMessage('El titulo es obligatorio'),
         body('descripcion')
             .notEmpty().withMessage('La descripción no puede ir vacía')
