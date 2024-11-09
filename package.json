@@ -21,6 +21,7 @@
     "cookie-parser": "^1.4.6",
     "csurf": "^1.2.2",
     "dotenv": "^16.4.5",
+    "dropzone": "^5.9.3",
     "express": "^4.19.2",
     "express-validator": "^7.2.0",
     "jsonwebtoken": "^9.0.2",
