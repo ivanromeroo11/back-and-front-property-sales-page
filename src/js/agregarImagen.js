@@ -18,6 +18,7 @@ Dropzone.options.imagen = {
     headers: {
         'CSRF-TOKEN': token
     },
+    paramName: 'imagen',
     
 
 
