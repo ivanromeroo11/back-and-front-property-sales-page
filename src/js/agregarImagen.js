@@ -11,7 +11,7 @@ Dropzone.options.imagen = {
     maxFilesize: 5,
     maxFiles: 1,
     parallelUploads: 1,
-    autoProcessQueue: true,
+    autoProcessQueue: false,
     addRemoveLinks: true,
     dictRemoveFile: 'Eliminar Imagen',
     dictMaxFilesExceeded: 'Solo puedes subir una imagen',
@@ -19,6 +19,22 @@ Dropzone.options.imagen = {
         'CSRF-TOKEN': token
     },
     paramName: 'imagen',
+    init: function(){
+        const dropzone = this
+        const btnPublicar = document.querySelector('#publicar')
+
+        btnPublicar.addEventListener('click', function(){
+            dropzone.processQueue()
+        })
+
+        dropzone.on('queuecomplete', function(){
+            if(dropzone.getActiveFiles().length == 0) {
+                window.location.href = '/mis-propiedades'
+            }
+        })
+    }
+    
+    
     
 
 
