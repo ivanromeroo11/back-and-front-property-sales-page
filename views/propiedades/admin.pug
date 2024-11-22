@@ -8,3 +8,5 @@ block contenido
         h2.text-center.text-2xl.font-extrabold= pagina
         
         a(href="/propiedades/crear" class="rounded py-2 px-10 bg-green-500 hover:bg-green-300 text-sm font-bold text-center text-white uppercase border-solid my-5 inline-block w-full sm:w-auto") Publicar Propiedad
+
+        pre= JSON.stringify(propiedades, null, 2)
