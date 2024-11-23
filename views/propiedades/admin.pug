@@ -9,4 +9,19 @@ block contenido
         
         a(href="/propiedades/crear" class="rounded py-2 px-10 bg-green-500 hover:bg-green-300 text-sm font-bold text-center text-white uppercase border-solid my-5 inline-block w-full sm:w-auto") Publicar Propiedad
 
-        pre= JSON.stringify(propiedades, null, 2)
+        //pre= JSON.stringify(propiedades, null, 2)
+
+        if propiedades.length
+          div(class="bg-white shadow rounded-lg")
+            ul(class="divide-y divide-gray-200")
+              each propiedad in propiedades
+                li
+
+                  div(class="p-6 w-full flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-8  gap-4")
+                    div(class="sm:w-1/4 md:w-1/6")
+                      img(src=`uploads/${propiedad.imagen}` alt=` Imagen propiedad ${propiedad.titulo}` class="w-full block")
+                    div(class="sm:w-2/4 md:w-3/6 lg:w-4/6") 2
+                    div(class="sm:w-1/4 md:w-2/6 lg:w-1/6") 3
+
+        else 
+            p.text-center No hay propiedades 
