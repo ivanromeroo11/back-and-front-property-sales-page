@@ -318,6 +318,16 @@ const eliminar = async (req, res ) => {
 
 };
 
+//Muestra una propiedad
+
+const mostrarPropiedad = async (req, res) => {
+
+    res.render('propiedades/mostrar',{
+        
+    })
+
+};
+
 
 export{
     admin,
@@ -327,5 +337,6 @@ export{
     almacenarImagen,
     editar,
     guardarCambios,
-    eliminar
+    eliminar,
+    mostrarPropiedad
 };
