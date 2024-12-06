@@ -68,7 +68,7 @@ router.post('/propiedades/eliminar/:id',
 router.get('/propiedad/:id',
     mostrarPropiedad
 
-)
+);
 
 
 
