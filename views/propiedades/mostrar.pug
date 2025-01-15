@@ -1,4 +1,7 @@
-extends ../layout/app 
+extends ../layout/app
+
+block styles
+    link(rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css")
 
 block contenido 
 
@@ -45,6 +48,11 @@ block contenido
                     div(class="p-5")
                          p(class="text-gray-600 font-bold text-xs") Dirección
                               span(class="text-gray-800 block text-lg")= propiedad.calle
+
+
+block scripts
+    script(src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js")
+    script(src="/js/mostarMapa.js")
 
 
      
