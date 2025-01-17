@@ -24,18 +24,25 @@ const admin = async (req, res) => {
     const limit = 10;
     const offset = ((paginaActual * limit) -limit);
 
-    const propiedades = await Propiedad.findAll({
-        limit,
-        offset,
-        where: {
-            usuarioId: id
-        },
-        include: [
-            { model: Categoria, as: 'categoria'},
-            { model: Precio, as: 'precio'}
-            
-        ]
-    });
+    const [propiedades, total] = await Promise.all([
+        Propiedad.findAll({
+            limit,
+            offset,
+            where: {
+                usuarioId: id
+            },
+            include: [
+                { model: Categoria, as: 'categoria'},
+                { model: Precio, as: 'precio'}
+                
+            ]
+        }),
+        Propiedad.count({
+            where: {
+                usuarioId: id
+            }
+        })
+    ]);
     
 
 
@@ -43,6 +50,7 @@ const admin = async (req, res) => {
         pagina: 'Mis Propiedades',
         propiedades,
         csrfToken: req.csrfToken(),
+        paginas: Math.ceil(total / limit),
         
     });
 }
