@@ -15,11 +15,18 @@ const admin = async (req, res) => {
         return res.redirect('/mis-propiedades?pagina=1');
     };
 
-
+    try{
 
     const { id } = req.usuario;
 
+    //Limites y offset para el paginador
+
+    const limit = 10;
+    const offset = ((paginaActual * limit) -limit);
+
     const propiedades = await Propiedad.findAll({
+        limit,
+        offset,
         where: {
             usuarioId: id
         },
@@ -39,6 +46,10 @@ const admin = async (req, res) => {
         
     });
 }
+    catch (error) {
+        console.log(error);
+    };
+};
 
 // Formulario para crear una propiedad
 
