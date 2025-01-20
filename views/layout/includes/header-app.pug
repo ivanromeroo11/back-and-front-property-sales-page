@@ -4,6 +4,15 @@ header.bg-blue-600.p-4
             span.font-normal Raices
 
         nav(class= "my-5 text-sm md:flex md:items-center md:gap-3 font-bold text-white hidden")
-            a(href="" class="rounded py-1 px-5 bg-blue-800 hover:bg-blue-900") Mis propiedades
-            a(href="" class="rounded py-1 px-5 bg-blue-800 hover:bg-blue-900") Mi perfil
-            a(href="" class="rounded py-1 px-5 bg-blue-800 hover:bg-blue-900") Cerrar Sesión            
+            a(href="/auth/registro" class="rounded py-1 px-5 bg-blue-800 hover:bg-blue-900") Crear Cuenta
+            a(href="/auth/login" class="rounded py-1 px-5 bg-blue-800 hover:bg-blue-900") Iniciar Sesión
+
+div(class="bg-green-400 py-5 hidden lg:block")
+    div(class="container mx-auto flex justify-between")
+        a(href="/categorias/1" class="text-sm font-bold uppercase text-white") Casas 
+        a(href="/categorias/2" class="text-sm font-bold uppercase text-white") Departamentos
+        a(href="/categorias/3" class="text-sm font-bold uppercase text-white") Almacenes
+        a(href="/categorias/4" class="text-sm font-bold uppercase text-white") Terrenos
+        a(href="/categorias/5" class="text-sm font-bold uppercase text-white") Cabañas
+
+                    
