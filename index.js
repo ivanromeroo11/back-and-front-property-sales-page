@@ -9,6 +9,7 @@ import csurf from 'csurf'
 import cookieParser from 'cookie-parser'
 import userRoutes from './routes/userRoutes.js'
 import propiedadesRoutes from './routes/propiedadesRoutes.js'
+import appRoutes from './routes/appRoutes.js'
 import db from './config/db.js'
 
 
@@ -47,7 +48,7 @@ try {
 
 
 // Routing
-
+app.use('/', appRoutes)
 app.use('/auth', userRoutes)
 app.use('/', propiedadesRoutes)
 
