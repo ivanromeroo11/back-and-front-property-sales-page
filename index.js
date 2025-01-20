@@ -10,6 +10,7 @@ import cookieParser from 'cookie-parser'
 import userRoutes from './routes/userRoutes.js'
 import propiedadesRoutes from './routes/propiedadesRoutes.js'
 import appRoutes from './routes/appRoutes.js'
+import apiRoutes from './routes/apiRoutes.js'
 import db from './config/db.js'
 
 
@@ -51,6 +52,7 @@ try {
 app.use('/', appRoutes)
 app.use('/auth', userRoutes)
 app.use('/', propiedadesRoutes)
+app.use('/api', apiRoutes)
 
 // Habilitar Pug
 
