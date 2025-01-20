@@ -1,6 +1,9 @@
 
 const inicio = (req, res) => {
-    res.send('Página de Inicio');
+    
+    res.render('inicio', {
+        pagina: 'Inicio'
+    })
 
 };
 
