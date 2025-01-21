@@ -5,11 +5,13 @@
 
     let markers = new L.FeatureGroup().addTo(mapa);
 
-      // Filtros
+    let propiedades = [];
+
+    // Filtros
     const filtros = {
-        categoria: ''  , 
+        categoria: '', 
         precio: '',
-    }
+    };
 
     const categoriasSelect = document.querySelector('#categorias');
     const preciosSelect = document.querySelector('#precios');
@@ -21,10 +23,12 @@
     //Filtrado de Categorías y precios 
     categoriasSelect.addEventListener('change', e => {
         filtros.categoria = +e.target.value;
+        filtrarPropiedades();
 
     });
     preciosSelect.addEventListener('change', e => {
         filtros.precio = +e.target.value;
+        filtrarPropiedades();
     
     });
    
@@ -58,14 +62,23 @@
                 <img src="/uploads/${propiedad?.imagen}" alt="imagen propiedad">
                 <p class="text-gray-600 font-bold">${propiedad.precio.precio}</p>
                 <a href="/propiedad/${propiedad.id}" class="bg-green-400 block p-2 text-center font-bold uppercase text-white">Ver propiedad</a>
-                `)
-                console.log(propiedad)
+                `);
 
             markers.addLayer(marker);
 
         })
 
 
+    }
+
+    const filtrarPropiedades = () => {
+       
+        const resultado = propiedades.filter(filtrarCategoria)
+
+    }
+
+    const filtrarCategoria = (propiedad) => {
+      return filtros.categoria ? propiedad.categoriaId === filtros.categoria : propiedad;
     }
 
     obtenerPropiedades();
