@@ -598,14 +598,14 @@ video {
 .h-auto {
   height: auto;
 }
-.h-\[500px\] {
-  height: 500px;
-}
 .min-h-screen {
   min-height: 100vh;
 }
 .w-full {
   width: 100%;
+}
+.w-24 {
+  width: 6rem;
 }
 .max-w-4xl {
   max-width: 56rem;
@@ -1033,8 +1033,16 @@ video {
     width: 50%;
   }
 
+  .md\:w-auto {
+    width: auto;
+  }
+
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:flex-row {
+    flex-direction: row;
   }
 
   .md\:items-center {
