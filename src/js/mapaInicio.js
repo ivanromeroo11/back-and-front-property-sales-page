@@ -37,7 +37,7 @@
         try {
             const url = '/api/propiedades';
             const respuesta = await fetch(url);
-            const propiedades = await respuesta.json();
+            propiedades = await respuesta.json();
 
             mostrarPropiedades(propiedades);
            
@@ -50,6 +50,11 @@
     };
 
     const mostrarPropiedades = propiedades  => {
+
+        //Limpiar los markers
+        markers.clearLayers();
+
+
         propiedades.forEach(propiedad => {
             //Agregar los pines 
             const marker = new L.marker([propiedad?.lat, propiedad?.lng],{
@@ -62,8 +67,7 @@
                 <img src="/uploads/${propiedad?.imagen}" alt="imagen propiedad">
                 <p class="text-gray-600 font-bold">${propiedad.precio.precio}</p>
                 <a href="/propiedad/${propiedad.id}" class="bg-green-400 block p-2 text-center font-bold uppercase text-white">Ver propiedad</a>
-                `);
-
+                `)
             markers.addLayer(marker);
 
         })
@@ -73,13 +77,15 @@
 
     const filtrarPropiedades = () => {
        
-        const resultado = propiedades.filter(filtrarCategoria)
+        const resultado = propiedades.filter(filtrarCategoria).filter(filtrarPrecio);
+        mostrarPropiedades(resultado);
+        console.log(resultado)
 
     }
 
-    const filtrarCategoria = (propiedad) => {
-      return filtros.categoria ? propiedad.categoriaId === filtros.categoria : propiedad;
-    }
+    const filtrarCategoria = propiedad => filtros.categoria ? propiedad.categoriaId === filtros.categoria : propiedad;
+
+    const filtrarPrecio = propiedad => filtros.precio ? propiedad.precioId === filtros.precio : propiedad;
 
     obtenerPropiedades();
 
