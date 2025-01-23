@@ -30,8 +30,19 @@ block contenido
         section(class="py-5")
             h2(class="text-center text-4xl font-extrabold pt-10") Casas en Venta
 
-            pre= JSON.stringify(departamentos, undefined, 2)
-
+            div(class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-14")
+                each casa in casas
+                    div(class="bg-white rounded-lg shadow-md")
+                        img(class="object-cover h-72 w-full" src=`/uploads/${casa.imagen}` alt=`imagen casa ${casa.titulo}`)
+                        div(class="p-5 space-y-4")
+                            h3(class="text-lg font-bold text-gray-800")= casa.titulo
+                            p(class="text-sm text-gray-600") Habitaciones: 
+                              span(class="font-bold text-gray-800")= casa.habitaciones
+                            p(class="text-sm text-gray-600") WC: 
+                              span(class="font-bold text-gray-800")= casa.wc
+                            p(class="text-sm text-gray-600") Precio: 
+                              span(class="font-bold text-gray-800")= casa.precio.precio
+                            a(href=`/propiedad/${casa.id}` class="bg-indigo-600 w-full text-center block font-bold text-white p-2 uppercase rounded") Ver Propiedad
             
 
    
