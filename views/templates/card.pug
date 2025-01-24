@@ -1,0 +1,18 @@
+div(class="bg-white rounded-lg shadow-md")
+    img(class="object-cover h-72 w-full" src=`/uploads/${propiedad.imagen}` alt=`imagen casa ${propiedad.titulo}`)
+    div(class="p-5 space-y-4")
+        h3(class="text-lg font-bold text-gray-800")= propiedad.titulo
+        p(class="text-sm text-gray-600") Habitaciones: 
+            span(class="font-bold text-gray-800")= propiedad.habitaciones
+        p(class="text-sm text-gray-600") WC: 
+            span(class="font-bold text-gray-800")= propiedad.wc
+        p(class="text-sm text-gray-600") Precio: 
+            span(class="font-bold text-gray-800")= propiedad.precio.precio
+        a(href=`/propiedad/${propiedad.id}` class="bg-indigo-600 w-full text-center block font-bold text-white p-2 uppercase rounded") Ver Propiedad
+            
+
+   
+
+
+ 
+
