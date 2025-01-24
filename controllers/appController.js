@@ -80,6 +80,9 @@ const categoria = async (req, res,) => {
 };
 
 const noEncontrado = (req, res) => {
+    res.render('404', {
+        pagina: 'Pagina no encontrada'
+    })
 
 };
 
