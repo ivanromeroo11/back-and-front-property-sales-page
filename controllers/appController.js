@@ -93,28 +93,31 @@ const noEncontrado = (req, res) => {
 const buscador = async (req, res) => {
     const { termino } = req.body;
 
-    //Validar que termino no este vacio
-
-    if(!termino.trim()){
-        res.redirect('back');
+    // Validar que termino no este vacio
+    if (!termino.trim()) {
+        return res.redirect('back');
     }
-    
-    // Consultar las propiedades
-    const propiedades =  await Propiedad.findAll({
-        where:{
-            titulo:{
-                [Sequelize.Op.iLike]: '%'+termino+'%'
-            }
 
+    // Consultar las propiedades
+    const propiedades = await Propiedad.findAll({
+        where: {
+            titulo: {
+                [Sequelize.Op.like]: '%' + termino + '%'
+            }
         },
-        include:[
-            {model: Precio, as: 'precio'},
+        include: [
+            { model: Precio, as: 'precio' }
         ]
-    })
+    });
+
+    res.render('busqueda', {
+        pagina: `Resultados de la busqueda: ${termino}`,
+        propiedades,
+        csrfToken: req.csrfToken()
+    });
 
 
 };
-
 export {
     inicio,
     categoria,
