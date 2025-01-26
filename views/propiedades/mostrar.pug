@@ -48,12 +48,14 @@ block contenido
                     div(class="p-5")
                          p(class="text-gray-600 font-bold text-xs") Dirección
                               span(class="text-gray-800 block text-lg")= propiedad.calle
+                         
+                         h3(class="text-2xl text-center my-10 font-extrabold text-gray-900") Vendedor
+                         if !usuario
+                            div(class="flex justify-center gap-2")
+                              p Si deseas contactar al vendedor
+                              a(class="text-indigo-600"  href="/auth/crear-cuenta") debes crear un cuenta     
 
 
 block scripts
     script(src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js")
     script(src="/js/mostarMapa.js")
-
-
-     
-
