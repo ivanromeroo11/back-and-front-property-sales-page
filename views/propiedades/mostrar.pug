@@ -15,7 +15,7 @@ block contenido
                     span(class="font-normal")= propiedad.categoria.nombre
           
 
-          div(class="mt-5 md:flex md:gap-4")
+          div(class="mt-5 md:flex md:gap-4 md:items-start")
                div(class="md:w-2/3 bg-white shadow rounded-lg")
                    img(src=`/uploads/${propiedad.imagen}`, alt=`imagen de la propiedad ${propiedad.titulo}`)
                    
@@ -38,7 +38,7 @@ block contenido
                                    span(class="text-gray-800 block text-lg")= propiedad.precio.precio
 
 
-               div(class="md:w-1/3")
+               aside(class="md:w-1/3 bg-white shadow rounded-lg")
                     h3(class="text-center py-10 leading-6 text-2xl font-bold text-gray-900") Ubicación
 
                     div(class="h-96" id="mapa")
@@ -51,9 +51,9 @@ block contenido
                          
                          h3(class="text-2xl text-center my-10 font-extrabold text-gray-900") Vendedor
                          if !usuario
-                            div(class="flex justify-center gap-2")
-                              p Si deseas contactar al vendedor
-                              a(class="text-indigo-600"  href="/auth/crear-cuenta") debes crear un cuenta     
+                            div(class="flex flex-col items-center justify-center gap-2")
+                              p(class="text-center") Si deseas contactar al vendedor
+                              a(class="text-indigo-600"  href="/auth/registro") debes crear un cuenta     
 
 
 block scripts
