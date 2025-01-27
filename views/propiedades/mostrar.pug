@@ -48,12 +48,17 @@ block contenido
                     div(class="p-5")
                          p(class="text-gray-600 font-bold text-xs") Dirección
                               span(class="text-gray-800 block text-lg")= propiedad.calle
+
+                         if !esVendedor    
                          
-                         h3(class="text-2xl text-center my-10 font-extrabold text-gray-900") Vendedor
-                         if !usuario
-                            div(class="flex flex-col items-center justify-center gap-2")
-                              p(class="text-center") Si deseas contactar al vendedor
-                              a(class="text-indigo-600"  href="/auth/registro") debes crear un cuenta     
+                              h3(class="text-2xl text-center my-10 font-extrabold text-gray-900") Vendedor
+                              if usuario
+                                 p Puedes enviar un mensaje
+
+                              else   
+                                 div(class="flex flex-col items-center justify-center gap-2")
+                                   p(class="text-center") Si deseas contactar al vendedor
+                                   a(class="text-indigo-600"  href="/auth/registro") debes crear un cuenta     
 
 
 block scripts

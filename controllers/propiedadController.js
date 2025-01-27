@@ -1,6 +1,7 @@
 import { unlink } from 'node:fs/promises';
 import { validationResult } from 'express-validator';
 import { Precio, Categoria, Propiedad } from '../models/index.js';
+import { esVendedor } from '../helpers/index.js';
 
 
 
@@ -380,7 +381,8 @@ const mostrarPropiedad = async (req, res) => {
         propiedad,
         pagina: propiedad.titulo,
         csrfToken: req.csrfToken(),
-        usuario: req.usuario
+        usuario: req.usuario,
+        esVendedor: esVendedor(req.usuario?.id, propiedad.usuarioId)
        
     })
 
