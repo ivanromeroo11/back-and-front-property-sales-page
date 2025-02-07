@@ -8,7 +8,18 @@ block contenido
     div(class="mx-auto max-w-4xl bg-white shadow rounded-lg")
 
         if mensajes.length 
-            p Si hay mensajes
+            ul
+                each mensaje in mensajes
+                    li(class="border-gray-200 border-b p-5")
+                        p(class="font-bold text-gray-800") Nombre:  
+                            span(class="font-normal")= mensaje.usuarioId
+
+                        p(class="font-bold text-gray-800") Mensaje:  
+                            span(class="font-normal")= mensaje.mensaje   
+
+
+                        p(class="font-bold text-gray-800") Fecha: 
+                            span(class="font-normal")= mensaje.createdAt 
 
         else
             p(class="text-center text-gray-600") No hay mensajes
