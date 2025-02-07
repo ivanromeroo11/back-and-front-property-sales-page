@@ -441,10 +441,19 @@ const enviarMensaje = async (req, res) => {
 
    
 
-   res.redirect('/')
+    res.redirect('/')
 
 
 };
+
+// Leer mensajes recibidos
+
+const verMensajes = async (req, res) => {
+
+    res.send('Ver Mensajes aquí');
+
+
+}
 
 export{
     admin,
@@ -456,5 +465,6 @@ export{
     guardarCambios,
     eliminar,
     mostrarPropiedad,
-    enviarMensaje
+    enviarMensaje,
+    verMensajes
 };
