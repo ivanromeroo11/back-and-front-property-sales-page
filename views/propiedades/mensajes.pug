@@ -12,7 +12,11 @@ block contenido
                 each mensaje in mensajes
                     li(class="border-gray-200 border-b p-5")
                         p(class="font-bold text-gray-800") Nombre:  
-                            span(class="font-normal")= mensaje.usuarioId
+                            span(class="font-normal")= mensaje.usuario.nombre
+
+                        p(class="font-bold text-gray-800") Email:   
+                            span(class="font-normal")= mensaje.usuario.email
+
 
                         p(class="font-bold text-gray-800") Mensaje:  
                             span(class="font-normal")= mensaje.mensaje   
