@@ -1,6 +1,6 @@
 import { unlink } from 'node:fs/promises';
 import { validationResult } from 'express-validator';
-import { Precio, Categoria, Propiedad } from '../models/index.js';
+import { Precio, Categoria, Propiedad, Mensaje } from '../models/index.js';
 import { esVendedor } from '../helpers/index.js';
 
 
@@ -428,18 +428,20 @@ const enviarMensaje = async (req, res) => {
        
     }
 
+    const { mensaje } = req.body;
+    const { id: propiedadId } = req.params;
+    const { id: usuarioId } = req.usuario; 
+
     //Almacenar el mensaje
+    await Mensaje.create({
+        mensaje,
+        propiedadId,
+        usuarioId
+    })
 
    
 
-    res.render('propiedades/mostrar',{
-        propiedad,
-        pagina: propiedad.titulo,
-        csrfToken: req.csrfToken(),
-        usuario: req.usuario,
-        esVendedor: esVendedor(req.usuario?.id, propiedad.usuarioId)
-       
-    })
+   res.redirect('/')
 
 
 };
