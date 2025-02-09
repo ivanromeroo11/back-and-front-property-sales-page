@@ -391,9 +391,6 @@ const mostrarPropiedad = async (req, res) => {
 
     const { id } = req.params;
 
-   
-
-
     // Comprobar que la propiedad exista
     
     const propiedad = await Propiedad.findByPk(id, {
@@ -403,7 +400,7 @@ const mostrarPropiedad = async (req, res) => {
         ]
     });
 
-    if(!propiedad) {
+    if(!propiedad || !propiedad.publicado) {
         return res.redirect('/404')
     }
 
