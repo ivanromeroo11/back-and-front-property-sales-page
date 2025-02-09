@@ -21,7 +21,7 @@
             }
         })
 
-        console.log(respuesta)
+        const resultado = await respuesta.json()
         
        } catch (error) {
               console.log(error)

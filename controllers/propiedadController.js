@@ -357,8 +357,32 @@ const eliminar = async (req, res ) => {
 // Modificar el estado de una propiedad
 
 const cambiarEstado = async (req, res) => {
-    console.log('cambiando estado');
-}
+
+    const { id } = req.params;
+
+    //Validar que la propiedad exista
+    const propiedad = await Propiedad.findByPk(id);
+
+    if(!propiedad) {
+        return res.redirect('/mis-propiedades');
+    }
+
+    // Revisar que quein vista la url es quien creo la propiedad
+    if(propiedad.usuarioId.toString() !== req.usuario.id.toString()) {
+        return res.redirect('/mis-propiedades');
+    }
+
+    // Actualizar el estado de la propiedad 
+
+    propiedad.publicado = !propiedad.publicado;
+
+    await propiedad.save();
+
+    res.json({
+        resultado: 'ok'
+    })
+  
+};
 
 
 //Muestra una propiedad
