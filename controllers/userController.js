@@ -80,6 +80,11 @@ const autentificar = async (req, res) => {
 }
 
 
+const cerrarSesion = async (req, res) => {
+   return res.clearCookie('_token').status(200).redirect('/auth/login')
+   
+}
+
 const formularioRegistro = (req, res) => {
      
     console.log(req.csrfToken())
@@ -326,6 +331,7 @@ const nuevoPassword = async (req, res) => {
 export{
     formularioLogin,
     autentificar,
+    cerrarSesion,
     formularioRegistro,
     registrar,
     confirmar,

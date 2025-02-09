@@ -5,6 +5,9 @@ header.bg-blue-600.p-4
                span.font-normal Raices
 
         nav(class= "my-5 text-sm md:flex md:items-center md:gap-3 font-bold text-white hidden")
-            a(href="" class="rounded py-1 px-5 bg-blue-800 hover:bg-blue-900") Mis propiedades
+            a(href="/mis-propiedades" class="rounded py-1 px-5 bg-blue-800 hover:bg-blue-900") Mis propiedades
             a(href="" class="rounded py-1 px-5 bg-blue-800 hover:bg-blue-900") Mi perfil
-            a(href="" class="rounded py-1 px-5 bg-blue-800 hover:bg-blue-900") Cerrar Sesión            
+
+            form(action="/auth/cerrar-sesion" method="POST")
+                input(type="hidden" name="_csrf" value=csrfToken)
+                input(type="submit" class="rounded py-1 px-5 bg-blue-800 hover:bg-blue-900" value="Cerrar Sesión")
