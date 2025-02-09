@@ -1121,6 +1121,10 @@ video {
     width: 66.666667%;
   }
 
+  .lg\:w-1\/6 {
+    width: 16.666667%;
+  }
+
   .lg\:flex-1 {
     flex: 1 1 0%;
   }
@@ -1130,6 +1134,12 @@ video {
   }
 
   .lg\:flex-row {
+    flex-direction: row;
+  }
+}
+@media (min-width: 1536px) {
+
+  .\32xl\:flex-row {
     flex-direction: row;
   }
 }
